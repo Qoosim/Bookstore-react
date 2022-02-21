@@ -9,6 +9,7 @@ const Nav = () => {
 
   return (
     <header>
+      <NavLink to="/" className="text-logo">Bookstore CMS</NavLink>
       <nav>
         <NavLink
           to="/"
@@ -20,7 +21,7 @@ const Nav = () => {
           to="/category"
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
-          Category
+          Categories
         </NavLink>
       </nav>
     </header>
