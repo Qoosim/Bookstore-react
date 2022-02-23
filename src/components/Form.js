@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { addBook } from '../redux/books/books';
 
 const Form = () => {
-  const [book, setBook] = useState('');
+  const [bookTitle, setBookTitle] = React.useState('');
+  const [bookAuthor, setBookAuthor] = React.useState('');
+
   const dispatch = useDispatch();
 
-  const handleInput = (e) => {
-    setBook(e.target.value);
-  };
-
-  const submitBookToStore = () => {
-    const newBook = {
-      id: uuid(),
-    };
-
-    dispatch(addBook(newBook));
+  const submitBookToStore = (e) => {
+    e.preventDefault();
+    if (bookTitle && bookAuthor) {
+      const newBook = {
+        id: uuid(),
+        title: bookTitle.trim(),
+        author: bookAuthor.trim(),
+      };
+      dispatch(addBook(newBook));
+      setBookTitle('');
+      setBookAuthor('');
+    }
   };
 
   return (
@@ -27,19 +31,19 @@ const Form = () => {
             type="text"
             placeholder="Title"
             name="title"
-            value={book.title}
-            onChange={handleInput}
+            value={bookTitle}
+            onChange={(e) => setBookTitle(e.target.value)}
           />
           <br />
           <input
             type="text"
             placeholder="Author"
             name="author"
-            value={book.author}
-            onChange={handleInput}
+            value={bookAuthor}
+            onChange={(e) => setBookAuthor(e.target.value)}
           />
         </div>
-        <button type="submit" onClick={submitBookToStore}>Add Book</button>
+        <button type="button" onClick={submitBookToStore}>Add Book</button>
       </form>
     </>
   );
