@@ -12,6 +12,9 @@ module.exports = {
       colors: {
         primary: '#0290ff',
       },
+      fontFamily: {
+        mont: ['Montserrat'],
+      },
     },
   },
   plugins: [],

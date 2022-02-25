@@ -8,22 +8,31 @@ const Nav = () => {
   };
 
   return (
-    <header>
-      <NavLink to="/" className="text-logo">Bookstore CMS</NavLink>
-      <nav>
-        <NavLink
-          to="/"
-          style={({ isActive }) => (isActive ? activeStyle : undefined)}
-        >
-          Books
-        </NavLink>
-        <NavLink
-          to="/category"
-          style={({ isActive }) => (isActive ? activeStyle : undefined)}
-        >
-          Categories
-        </NavLink>
-      </nav>
+    <header className="px-lg py-9 bg-neutral-50 border flex gap-10">
+      <NavLink
+        to="/"
+        className="text-primary font-bold text-3xl font-mont ml-9"
+      >
+        Bookstore CMS
+      </NavLink>
+      <ul className="flex gap-10 text-sm font-medium uppercase">
+        <li>
+          <NavLink
+            to="/"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Books
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/category"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Categories
+          </NavLink>
+        </li>
+      </ul>
     </header>
   );
 };
