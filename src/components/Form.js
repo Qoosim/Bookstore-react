@@ -1,25 +1,25 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import { addBook } from '../redux/books/books';
+import { addBookToApi } from '../api/helperFunction';
 
 const Form = () => {
   const [bookTitle, setBookTitle] = React.useState('');
-  const [bookAuthor, setBookAuthor] = React.useState('');
+  const [bookCategory, setBookCategory] = React.useState('');
 
   const dispatch = useDispatch();
 
   const submitBookToStore = (e) => {
     e.preventDefault();
-    if (bookTitle && bookAuthor) {
+    if (bookTitle && bookCategory) {
       const newBook = {
-        id: uuid(),
+        item_id: uuid(),
         title: bookTitle.trim(),
-        author: bookAuthor.trim(),
+        category: bookCategory.trim(),
       };
-      dispatch(addBook(newBook));
+      dispatch(addBookToApi(newBook));
       setBookTitle('');
-      setBookAuthor('');
+      setBookCategory('');
     }
   };
 
@@ -37,10 +37,10 @@ const Form = () => {
           <br />
           <input
             type="text"
-            placeholder="Author"
+            placeholder="Category"
             name="author"
-            value={bookAuthor}
-            onChange={(e) => setBookAuthor(e.target.value)}
+            value={bookCategory}
+            onChange={(e) => setBookCategory(e.target.value)}
           />
         </div>
         <button type="button" onClick={submitBookToStore}>Add Book</button>

@@ -1,18 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { removeBook } from '../redux/books/books';
+import { removeBookFromApi } from '../api/helperFunction';
 
-const Book = ({ id, title, author }) => {
+const Book = ({ book }) => {
   const dispatch = useDispatch();
+
   return (
     <div className="App">
-      <div key={id}>
-        <h4>{title}</h4>
-        <h4>{author}</h4>
+      <div key={book.item_id}>
+        <h4>{book.title}</h4>
+        <h4>{book.category}</h4>
         <button
           type="button"
-          onClick={() => dispatch(removeBook(id))}
+          onClick={() => dispatch(removeBookFromApi(book.item_id))}
         >
           remove
         </button>
@@ -22,18 +23,11 @@ const Book = ({ id, title, author }) => {
 };
 
 Book.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-};
-
-/**
-Book.propTypes = {
   book: PropTypes.shape({
+    item_id: PropTypes.string,
     title: PropTypes.string,
-    author: PropTypes.string,
+    category: PropTypes.string,
   }).isRequired,
 };
- */
 
 export default Book;
