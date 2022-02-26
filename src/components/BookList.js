@@ -12,9 +12,8 @@ const BookList = () => {
   }, []);
 
   return (
-    <div className="App">
-      <h3 className="text-3xl font-bold text-yellow bg-blue-400">Book Lists</h3>
-      <div>
+    <div className="container mx-auto px-md">
+      <ul>
         {
           books.map((book) => (
             <Book
@@ -24,7 +23,7 @@ const BookList = () => {
             />
           ))
         }
-      </div>
+      </ul>
       <Form />
     </div>
   );

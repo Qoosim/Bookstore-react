@@ -11,7 +11,7 @@ const Nav = () => {
     <header className="px-lg py-9 bg-neutral-50 border flex gap-10">
       <NavLink
         to="/"
-        className="text-primary font-bold text-3xl font-mont ml-9"
+        className="text-primary font-bold text-3xl font-mont"
       >
         Bookstore CMS
       </NavLink>
