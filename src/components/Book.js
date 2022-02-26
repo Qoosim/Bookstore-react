@@ -1,14 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import PropTypes from 'prop-types';
 import { removeBookFromApi } from '../api/helperFunction';
 
+const percentage = 72;
+
 const Book = ({ book }) => {
+  const id = book.item_id;
   const dispatch = useDispatch();
 
   return (
-    <div className="bg-neutral-50 mt-4 py-6 border-solid border-2 border-black-50 rounded">
-      <li key={book.item_id} className="mx-auto px-xs">
+    <li key={id} className="mx-auto px-xs flex flex-row bg-neutral-50 mt-4 py-6 border-solid border-2 border-black-50 rounded">
+      <div className="basis-1/2">
         <p className="text-slate-500">{book.category}</p>
         <h3 className="text-black text-2xl font-bold capitalize">{book.title}</h3>
         <span className="capitalize text-lg text-blueCustomize font-robSlab font-thin">Qoosim Abdul</span>
@@ -33,8 +38,26 @@ const Book = ({ book }) => {
             edit
           </button>
         </div>
-      </li>
-    </div>
+      </div>
+      <div className="basis-1/4">
+        <div>
+          <div style={{ width: 72, height: 72 }}>
+            <CircularProgressbar value={percentage} />
+          </div>
+          <div>
+            <h2 className="">72%</h2>
+            <span className="capitalize">completed</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <p className="capitalize">current chapter</p>
+          <p className="capitalize">chapter 16</p>
+          <button type="button" className="capitalize">update progress</button>
+        </div>
+      </div>
+    </li>
   );
 };
 
