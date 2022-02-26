@@ -42,7 +42,7 @@ const Form = () => {
   return (
     <>
       <div className="mt-5">
-        <h3 className="text-3xl font-mont mb-2">Add New Book</h3>
+        <h3 className="text-3xl font-mont mb-2 text-slate-500">Add New Book</h3>
         <form className="flex">
           <input
             className="flex-auto w-96 form-input mr-5 rounded"
