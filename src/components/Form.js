@@ -21,7 +21,7 @@ const categories = [
 
 const Form = () => {
   const [bookTitle, setBookTitle] = React.useState('');
-  const [bookCategory, setBookCategory] = React.useState('');
+  const [bookCategory, setBookCategory] = React.useState('default');
 
   const dispatch = useDispatch();
 
@@ -31,7 +31,7 @@ const Form = () => {
       const newBook = {
         item_id: uuid(),
         title: bookTitle.trim(),
-        category: bookCategory.trim(),
+        category: bookCategory,
       };
       dispatch(addBookToApi(newBook));
       setBookTitle('');
@@ -42,26 +42,28 @@ const Form = () => {
   return (
     <>
       <div className="mt-5">
-        <h3 className="text-3xl font-mont mb-2 text-slate-500">Add New Book</h3>
+        <h3 className="uppercase text-2xl font-mont mb-2 text-slate-500">add new book</h3>
         <form className="flex">
           <input
             className="flex-auto w-96 form-input mr-5 rounded"
             id="title"
             type="text"
-            placeholder="Title"
+            placeholder="Book title"
             value={bookTitle}
             onChange={(e) => setBookTitle(e.target.value)}
           />
           <select
-            className="flex-auto form-input mr-5 rounded"
             id="category"
             value={bookCategory}
             onChange={(e) => setBookCategory(e.target.value)}
+            className={`flex-auto form-input mr-5 rounded ${
+              bookCategory === 'default' && 'text-gray-400'
+            }`}
           >
-            <option>Category</option>
+            <option value="default" disable hidden className="text-slate-400">Category</option>
             {
               categories.map((category) => (
-                <option key={category} value={category}>{category}</option>
+                <option key={category} value={category} className="text-black">{category}</option>
               ))
             }
           </select>
