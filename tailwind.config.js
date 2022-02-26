@@ -10,6 +10,7 @@ module.exports = {
         sm: '3vw',
         xs: '2vw',
         halfHeight: '50vh',
+        15: '4vw',
       },
       colors: {
         primary: '#0290ff',
@@ -21,5 +22,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')], // eslint-disable-line
 };

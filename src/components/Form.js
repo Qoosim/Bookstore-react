@@ -41,10 +41,11 @@ const Form = () => {
 
   return (
     <>
-      <form>
-        <h3 className="">Add New Book</h3>
-        <section>
+      <div className="mt-5">
+        <h3 className="text-3xl font-mont mb-2">Add New Book</h3>
+        <form className="flex">
           <input
+            className="flex-auto w-96 form-input mr-5 rounded"
             id="title"
             type="text"
             placeholder="Title"
@@ -52,6 +53,7 @@ const Form = () => {
             onChange={(e) => setBookTitle(e.target.value)}
           />
           <select
+            className="flex-auto form-input mr-5 rounded"
             id="category"
             value={bookCategory}
             onChange={(e) => setBookCategory(e.target.value)}
@@ -63,9 +65,15 @@ const Form = () => {
               ))
             }
           </select>
-          <button type="button" onClick={submitBookToStore}>Add Book</button>
-        </section>
-      </form>
+          <button
+            className="flex-auto bg-primary text-white py-2 rounded border-0"
+            type="button"
+            onClick={submitBookToStore}
+          >
+            Add Book
+          </button>
+        </form>
+      </div>
     </>
   );
 };
