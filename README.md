@@ -1,4 +1,4 @@
-# Math-Magicians 
+# Bookstore 
 
 > This is a bookstore app that is built with react and redux. It is an application that allows a user to add and remove books from the bookstore. It is a project to demostrate the knowledge of react and redux acquired so far.
 
